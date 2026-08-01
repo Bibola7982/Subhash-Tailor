@@ -1,75 +1,623 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hitech Mobile Repair</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hitech Mobile - Instant Repairing in Hansi</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- Root Variables & Reset --- */
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary-color: #0f172a;
+            --accent-green: #22c55e;
+            --accent-green-dark: #16a34a;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
+            --shadow-lg: 0 12px 32px rgba(0,0,0,0.12);
+            --radius-md: 12px;
+            --radius-lg: 18px;
+        }
 
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
 
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* --- Navbar --- */
+        header {
+            background-color: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .brand-logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.8rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-cta {
+            background-color: var(--primary-color);
+            color: #fff !important;
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            transition: background 0.3s !important;
+        }
+
+        .nav-cta:hover {
+            background-color: var(--primary-dark) !important;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #ffffff;
+            padding: 4.5rem 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(37, 99, 235, 0.2);
+            color: #60a5fa;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            border: 1px solid rgba(96, 165, 250, 0.3);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 span {
+            color: #38bdf8;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            margin-bottom: 2rem;
+        }
+
+        .brands-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .brand-chip {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--accent-green);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-2px);
+            background-color: var(--accent-green-dark);
+        }
+
+        /* --- General Section Layout --- */
+        section {
+            padding: 4rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* --- Popular Models Section --- */
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .model-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-md);
+            padding: 1.8rem 1.5rem;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .model-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-color);
+        }
+
+        .model-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .model-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+
+        .model-card p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .model-card .price-tag {
+            font-weight: 600;
+            color: var(--accent-green-dark);
+            background: #f0fdf4;
+            padding: 0.3rem 0.8rem;
+            border-radius: 12px;
+            display: inline-block;
+        }
+
+        /* --- Booking Form Section --- */
+        .booking-section {
+            background-color: #ffffff;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: 2.5rem;
+            margin-top: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .form-group label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+            background-color: var(--bg-light);
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            border-color: var(--primary-color);
+            background-color: #fff;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.9rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* --- Contact Section --- */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-info-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            background: #eff6ff;
+            padding: 0.8rem;
+            border-radius: 50%;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn-call {
+            flex: 1;
+            text-align: center;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .btn-whatsapp {
+            flex: 1;
+            text-align: center;
+            background-color: var(--accent-green);
+            color: white;
+            padding: 0.75rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* --- Floating WhatsApp Button --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+            z-index: 1000;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--secondary-color);
+            color: #94a3b8;
+            text-align: center;
+            padding: 2rem 1.5rem;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            border-top: 1px solid #1e293b;
+        }
+
+        footer p span {
+            color: #fff;
+        }
+
+        /* --- Media Queries --- */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.1rem;
+            }
+            .nav-links {
+                display: none; /* Can be enhanced with mobile menu */
+            }
+            .booking-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar">
-    <div class="logo">Hitech <span>Mobile</span></div>
-</nav>
+    <!-- Header & Navigation -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="brand-logo">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+                Hitech <span>Mobile</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#models">Popular Models</a></li>
+                <li><a href="#book">Book Repair</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="https://wa.me/918607777717" class="nav-cta" target="_blank"><i class="fa-brands fa-whatsapp"></i> Chat Now</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<!-- HERO -->
-<section class="hero">
-    <h1>Mobile Repair in 60 Minutes</h1>
-    <p>iPhone • Samsung • Vivo • Oppo • Realme</p>
-</section>
+    <!-- Hero Section -->
+    <main id="home">
+        <section class="hero">
+            <div class="hero-content">
+                <span class="hero-badge"><i class="fa-solid fa-bolt"></i> Express Service Available</span>
+                <h1>Mobile Repairing in <span>60 Minutes</span></h1>
+                <p>Quick, reliable, and professional smartphone repair service at Hansi.</p>
+                
+                <div class="brands-list">
+                    <span class="brand-chip"><i class="fa-brands fa-apple"></i> iPhone</span>
+                    <span class="brand-chip"><i class="fa-solid fa-mobile"></i> Samsung</span>
+                    <span class="brand-chip"><i class="fa-solid fa-mobile-button"></i> Vivo</span>
+                    <span class="brand-chip"><i class="fa-solid fa-mobile"></i> Oppo</span>
+                    <span class="brand-chip"><i class="fa-solid fa-mobile-screen"></i> Realme</span>
+                </div>
 
-<!-- POPULAR MODELS -->
-<section class="section">
-    <h2>Popular Models</h2>
+                <a href="https://wa.me/918607777717?text=Hi,%20I%20want%20to%20get%20my%20phone%20repaired." class="hero-btn" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i> Book Repair via WhatsApp
+                </a>
+            </div>
+        </section>
 
-    <div class="model-list">
-        <button onclick="quickSearch('iPhone 13')">iPhone 13</button>
-        <button onclick="quickSearch('iPhone 14')">iPhone 14</button>
-        <button onclick="quickSearch('Samsung S21')">S21</button>
-        <button onclick="quickSearch('Vivo V25')">Vivo V25</button>
-        <button onclick="quickSearch('Oppo A78')">Oppo A78</button>
-        <button onclick="quickSearch('Realme Narzo')">Realme</button>
-    </div>
-</section>
+        <!-- Popular Models / Services Section -->
+        <section id="models">
+            <div class="section-title">
+                <h2>Popular Repair Services</h2>
+                <p>Fast replacement with genuine parts & warranty</p>
+            </div>
 
-<!-- SEARCH -->
-<section class="section">
-    <h2>Find Repair Price</h2>
-    <input type="text" id="search" placeholder="Type phone model...">
-    <div id="results" class="grid"></div>
-</section>
+            <div class="models-grid">
+                <div class="model-card">
+                    <i class="fa-solid fa-display model-icon"></i>
+                    <h3>Screen Replacement</h3>
+                    <p>Original & compatible screens available with high touch responsiveness.</p>
+                    <span class="price-tag">Best Rate Guaranteed</span>
+                </div>
 
-<!-- BOOK -->
-<section class="section dark">
-    <h2>Book Repair</h2>
+                <div class="model-card">
+                    <i class="fa-solid fa-battery-full model-icon"></i>
+                    <h3>Battery Replacement</h3>
+                    <p>Fix quick drain & charging issues with high-capacity batteries.</p>
+                    <span class="price-tag">6 Months Warranty</span>
+                </div>
 
-    <form id="form">
-        <input type="text" id="name" placeholder="Name" required>
-        <input type="text" id="phone" placeholder="Phone" required>
-        <input type="text" id="model" placeholder="Model" required>
-        <textarea id="issue" placeholder="Problem"></textarea>
-        <button>Book on WhatsApp</button>
-    </form>
-</section>
+                <div class="model-card">
+                    <i class="fa-solid fa-plug model-icon"></i>
+                    <h3>Charging Port Fix</h3>
+                    <p>Loose connection or slow charging issue resolved in 30 mins.</p>
+                    <span class="price-tag">Quick Fix</span>
+                </div>
 
-<!-- CONTACT -->
-<section class="section contact">
-    <h2>Contact</h2>
-    <p>📍 Near Auto Market, Hansi</p>
+                <div class="model-card">
+                    <i class="fa-solid fa-droplet-slash model-icon"></i>
+                    <h3>Water Damage Repair</h3>
+                    <p>Advanced mother-board cleaning & component level repair.</p>
+                    <span class="price-tag">Expert Technician</span>
+                </div>
+            </div>
+        </section>
 
-    <div class="btns">
-        <a href="tel:8607777717">Call</a>
-        <a href="https://wa.me/918607777717">WhatsApp</a>
-    </div>
-</section>
+        <!-- Book Repair Form -->
+        <section id="book">
+            <div class="section-title">
+                <h2>Book Repair Service</h2>
+                <p>Fill details below or contact us directly to get instant estimation</p>
+            </div>
 
-<!-- FLOATING -->
-<a href="https://wa.me/918607777717" class="float">💬</a>
+            <div class="booking-section">
+                <form action="https://wa.me/918607777717" method="get" target="_blank">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" placeholder="e.g. Rahul Sharma" required>
+                        </div>
 
-<script src="script.js"></script>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="e.g. 9876543210" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="brand">Select Mobile Brand</label>
+                            <select id="brand" required>
+                                <option value="">Choose Brand</option>
+                                <option value="iPhone">iPhone</option>
+                                <option value="Samsung">Samsung</option>
+                                <option value="Vivo">Vivo</option>
+                                <option value="Oppo">Oppo</option>
+                                <option value="Realme">Realme</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="model">Device Model</label>
+                            <input type="text" id="model" placeholder="e.g. iPhone 13 / Redmi Note 10" required>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="issue">Describe Issue</label>
+                            <textarea id="issue" rows="3" placeholder="Broken screen, battery drain, speaker issue..."></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn"><i class="fa-solid fa-paper-plane"></i> Request Estimate & Appointment</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="section-title">
+                <h2>Visit Our Shop</h2>
+                <p>Get in touch or stop by for instant assistance</p>
+            </div>
+
+            <div class="contact-container">
+                <div class="contact-info-card">
+                    <div class="contact-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div>
+                            <h4>Store Address</h4>
+                            <p>Near Auto Market, Hansi, Haryana - 125033</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <div>
+                            <h4>Call / WhatsApp</h4>
+                            <p>+91 86077 77171</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fa-solid fa-clock"></i>
+                        <div>
+                            <h4>Working Hours</h4>
+                            <p>Mon - Sun: 09:00 AM - 08:30 PM</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-buttons">
+                        <a href="tel:+918607777717" class="btn-call"><i class="fa-solid fa-phone"></i> Call Now</a>
+                        <a href="https://wa.me/918607777717" class="btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/918607777717?text=Hi,%20I%20need%20help%20with%20mobile%20repairing." class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 <span>Hitech Mobile</span>. All Rights Reserved. | Near Auto Market, Hansi</p>
+    </footer>
+
 </body>
 </html>
